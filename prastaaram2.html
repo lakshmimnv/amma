@@ -1,0 +1,243 @@
+<html>
+<head>
+<style>
+html, body {width: 600px;background-color: black; color: wheat;}
+p.first {font-size:40px; color:green;display:inline;}
+p.second {font-size:50px; color:blue;display:inline;}
+p.third {font-size:70px; color:red;display:inline;}
+p.fourth {font-size:40px; color:magenta;display:inline;}
+p.mantra {font-size:30px; color:gray;display:inline;}
+//td { color: #9900CC; font-weight: bold; }
+style="font-size:20;cell-padding:10"
+
+//table.dis td { background-color: #00FFFF;font-size:30}
+-->
+table.dis td {  background-color: #00FFFF;  font-size:40;  cell-spacing:10;  text-align:center;  border: 1px solid black; 
+  width:60px}
+
+table.dis td:hover {background-color: #F0F0F0; font-weight: bold; }
+
+input[type=text] {  padding: 0;  height: 50px;  position: relative;
+  left: 0;  outline: none;  border: 1px solid #cdcdcd;  border-color: rgba(0, 0, 0, .15);  background-color: white;  font-size: 40px;}
+</style>
+</head>
+
+<body>
+
+<center>
+<p>&nbsp;</p><p>&nbsp;</p>
+
+Mantram: <input type=text size=10 id=pallavamText value="श्रीमात्रेनमः" /><br />
+16*36*36 = 20736;
+<input type=button value="Matrukalu" id=devnagari onclick="parseText(this)" /> 
+<!--input type=button value="Telugu" id=telugu onclick="parseText(this)" /> -->
+
+<div id=out> </div>
+<div id=chartab > </div>
+</center>
+
+<script>
+function remove(eThis, e) {
+  var element=eThis, incr = 0, all = document.querySelectorAll(".container");
+/*
+all.forEach((elem, index) => {
+  console.log(elem.id); // the elment
+  console.log(index); // the index in the NodeList
+  if(incr++ < (e.currentTarget.id - elem.id)) {
+     elem.remove();
+	 console.log("element removed");
+  } 
+  else { return; }
+  // elem.classList.add("active");
+});
+*/
+for( i=0; i<all.length; i++ ) 
+{
+  //console.log("i=="+i+"---"+ all[i]); // the elment
+  if(i==0) { incr = all[i].id; };
+  if(incr++ < e.currentTarget.id) {
+     all[i].remove();
+	 console.log(all[i].id + "element removed");
+  } 
+  else { return; }
+  // elem.classList.add("active");
+}
+
+ element.remove();
+ out.innerHTML = "<div class='main'>"+ all + "</div>"
+/*
+[].forEach.call((all, index), function(el) {
+     console.log(el);
+     el.classList.add("active");
+  }); 
+for (var i=0, max=all.length; i < e.currentTarget.id && max; i++) {
+     // Do something with the element here
+	 console.log(all[i]);
+}*/
+ 
+}
+function hideText(e) {
+ /* 
+  var elems = document.querySelectorAll(".active");
+  
+//  for(i=1; i<e.currentTarget.id; i++){
+   for(i=1; i<3; i++){
+	elems = document.querySelectorAll(".container");
+	console.log(elems);
+  }
+  [].forEach.call(elems, function(el) {
+     console.log(el);
+     el.classList.remove("active");
+  });
+  //e.currentTarget.className = "container active";
+  var id = e.currentTarget.id;
+ //  alert("hide called on "+e.currentTarget.id);
+ */
+}
+function parseText(eThisButton) {
+// हंसस्सोहं  नमश्शिवाय श्रीमात्रेनमः
+
+   var txt = document.getElementById("pallavamText").value.trim();
+   var out = document.getElementById("out");
+   var str = " ";
+   var counter = 1;
+ /*  if(eThisButton != "undefined" || eThisButton.defaultValue == "Telugu")
+   {
+   var swara = swaraTelugu;
+   var vyanjan = vyanjanTelugu;
+   }
+   /*
+     for (i=0; i<swara.length; i++) {
+       for(j=0; j<swara.length; j++){
+			for(k=1; k<vyanjan.length; k++){
+					document.writeln (counter++ + "). &nbsp; &nbsp; " + 
+					"  <p class='first'>" + (swara[i]) + 
+					"  </p><p class='second'>" + (swara[j]) + 
+					"  </p><p class='third'>" + (vyanjan[k]+"ं") + 
+					"  </p><p class='fourth'>"+ "आं ईं नमः" + 
+					"  </p><p class='mantra'>"+ txt + 
+					"  </p><br />");
+			}
+	   }
+	   //document.writeln("\n");
+	   // str+= counter++ + swara[i] + "  " + "\n";
+      
+   }*/
+   for (i=0; i<swara.length; i++) {
+       for(j=0; j<vyanjan.length; j++){
+			for(k=0; k<vyanjan.length; k++){
+			    // window.scrollTo(0, 0); hideText(event)
+            	str += "<div class='container' onclick='remove(this, event);' id='"+counter+"'>" + counter++ + "). &nbsp; &nbsp; " + 
+					"  <p class='first'>" + (swara[i]) + 
+					"  </p><p class='second'>" + (vyanjan[j]+"ं") + 
+					"  </p><p class='third'>" + (vyanjan[k]+"ं") + 
+					"  </p><p class='fourth'>"+ "आं ईं नमः" + 
+					"  </p><p class='mantra'>"+ txt + 
+					"  </p><br /></div>";			
+			}
+	   }
+	   // document.writeln(str);
+	   // str+= counter++ + swara[i] + "  " + "\n";
+      
+   }
+ //  alert("txt == "+ txt + "total == "+counter-1);
+  // document.getElementById("srcText").value ="<font size=50>"+counter+"</font>";
+ //  out.innerHTML = "<font size=50>"+str+" = "+txt+"</font>"
+  
+     out.innerHTML = "<div class='main'>"+ str + "</div>"
+}
+
+function printDevCharset(devMode) {
+    var start = 0x900;
+    var inc = 0;
+    var str=' <table style="font-size:20"><tr>';
+    for (i = 0; i <27; i++) {
+      for (j = 0; j < 5; j++) {
+        var ca = start+inc;
+        str += '<td style="background-color: #00FFFF;font-size:30" >'+ String.fromCharCode(ca) +"</td>"
+
+        if (devMode) {
+            str += " <td>"+inc+"</td>"
+                + "<td>"+"  0x"+ca.toString(16).toUpperCase()+" </td>"
+                + " <td>&nbsp; </td>";
+        }
+         //str += " <td>&nbsp; </td>";
+        //String sc = new String(ca);
+        //System.out.print(sc + " ");
+        inc++;
+        if (inc == 21 || inc == 58) break;
+        
+      }
+    //System.out.println();
+    str += "</tr><tr>"
+    }
+    str += "</tr></table>"
+    return str;
+}
+
+
+</script>
+
+
+<script>
+//Database
+/* 'इ', 'ई', 'उ', 'ऊ', 'ऋ', 'ॠ', 'ऌ', 'ॡ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः'
+var halanth = "्"
+var anuswara = "ं"
+var visarga = "ः"
+var samyukta = "््"
+var chandrabindu = "ँ" 
+var swaraMatra = new Map([
+    ['अ',' '],     ['आ','ा'],    ['इ','ि'],    ['ई','ी'],    ['उ','ु'],    ['ऊ','ू'],    ['ऋ','ृ'],    ['ॠ','ॄ'],    ['ऌ','ॢ'],    ['ॡ','ॣ'],    ['ए','े'],    ['ऐ','ै'],   ['ओ','ो'],    ['औ','ौ'],    ['अं', '\u0902'],    ['अः','\u0903']
+])
+
+
+let matraSwara = new Map([...swaraMatra.entries()].map(
+  ([key, value]) => ([value, key]))
+);
+*/
+var swara = [ 'अं', 'आं', 'इं', 'ईं',  'उं', 'ऊं', 'ऋं', 'ॠं', 'ऌं', 'ॡं', 'एं', 'ऐं', 'ओं', 'औं', 'अं', 'अः' ];
+var swaraTelugu = [ 'అం', 'ఆం', 'ఇం', 'ఈం',  'ఉం', 'ఊం', 'ఋం', 'ౠం', 'ఌం', 'ౡం', 'ఏం', 'ఐం', 'ఓం', 'ఔం', 'అం', 'అః' ];
+var swaraOld = [ 'अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ऋ', 'ॠ', 'ऌ', 'ॡ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः' ]
+var vyanjan = [ 'अ',
+                'क', 'ख', 'ग', 'घ', 'ङ', 
+                'च', 'छ', 'ज', 'झ', 'ञ', 
+                'ट', 'ठ', 'ड', 'ढ', 'ण', 
+                'त', 'थ', 'द', 'ध', 'न', 
+                'प', 'फ', 'ब', 'भ', 'म', 
+                'य', 'र', 'ल', 'व', 
+				'श', 'ष', 'स', 'ह', 'ळ', 'क्ष' 
+               ];
+var vyanjanTelugu = [ 'అ',
+                'క', 'ఖ', 'గ', 'ఘ', 'ఙ', 
+                'చ', 'ఛ', 'జ', 'ఝ', 'ఞ', 
+                'ట', 'ఠ', 'డ', 'ఢ', 'ణ', 
+                'త', 'థ', 'ద', 'ధ', 'న', 
+                'ప', 'ఫ', 'బ', 'భ', 'మ', 
+                'య', 'ర', 'ల', 'వ', 
+				'శ', 'ష', 'స', 'హ', 'ళ', 'క్ష' 
+               ];			   
+
+
+// var sankya = [ '०', '१', '२', '३', '४', '५', '६', '७', '८', '९' ]
+// let charsetStr = printDevCharset(true);
+/* let charsetStr = printKeyboard(); */
+/*
+var tab = document.getElementById("chartab");
+tab.innerHTML = "<p><font size=30><mark>" + charsetStr;
+addEventHandler();
+*/
+
+</script>
+
+
+<script>
+//Test code
+/* var out = document.getElementById("out"); */
+//out.innerHTML = swaraMatra.get('इ');
+parseText();
+</script>
+
+</body>
+
+</html>
