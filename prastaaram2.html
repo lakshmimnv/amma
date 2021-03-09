@@ -1,7 +1,7 @@
 <html>
 <head>
 <style>
-html, body {width: 600px;background-color: black; color: wheat;}
+html, body {width: 100%; min-width: 100%; background-color: black; color: wheat; margin:0 auto; padding: 0;}
 p.first {font-size:40px; color:green;display:inline;}
 p.second {font-size:50px; color:blue;display:inline;}
 p.third {font-size:70px; color:red;display:inline;}
@@ -25,12 +25,13 @@ input[type=text] {  padding: 0;  height: 50px;  position: relative;
 <body>
 
 <center>
-<p>&nbsp;</p><p>&nbsp;</p>
-
+<!--p>&nbsp;</p-->
+<div id="topText">
 Mantram: <input type=text size=10 id=pallavamText value="श्रीमात्रेनमः" /><br />
 16*36*36 = 20736;
 <input type=button value="Matrukalu" id=devnagari onclick="parseText(this)" /> 
 <!--input type=button value="Telugu" id=telugu onclick="parseText(this)" /> -->
+</div>
 
 <div id=out> </div>
 <div id=chartab > </div>
@@ -39,6 +40,10 @@ Mantram: <input type=text size=10 id=pallavamText value="श्रीमात�
 <script>
 function remove(eThis, e) {
   var element=eThis, incr = 0, all = document.querySelectorAll(".container");
+  if(document.getElementById("topText"))
+  document.getElementById("topText").remove();
+  // document.getElementById("topText").style.display  = 'none';
+ 
 /*
 all.forEach((elem, index) => {
   console.log(elem.id); // the elment
@@ -61,10 +66,12 @@ for( i=0; i<all.length; i++ )
   } 
   else { return; }
   // elem.classList.add("active");
+  
 }
 
  element.remove();
  out.innerHTML = "<div class='main'>"+ all + "</div>"
+ 
 /*
 [].forEach.call((all, index), function(el) {
      console.log(el);
@@ -95,7 +102,7 @@ function hideText(e) {
  */
 }
 function parseText(eThisButton) {
-// हंसस्सोहं  नमश्शिवाय श्रीमात्रेनमः
+// हंसस्सोहं  नमश्शिवाय श्रीमात्रेनमः శ్రీం హ్రీం హ్రౌం నమశ్శివాయ
 
    var txt = document.getElementById("pallavamText").value.trim();
    var out = document.getElementById("out");
@@ -127,7 +134,7 @@ function parseText(eThisButton) {
        for(j=0; j<vyanjan.length; j++){
 			for(k=0; k<vyanjan.length; k++){
 			    // window.scrollTo(0, 0); hideText(event)
-            	str += "<div class='container' onclick='remove(this, event);' id='"+counter+"'>" + counter++ + "). &nbsp; &nbsp; " + 
+            	str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'>" + counter++ + "). &nbsp; &nbsp; " + 
 					"  <p class='first'>" + (swara[i]) + 
 					"  </p><p class='second'>" + (vyanjan[j]+"ं") + 
 					"  </p><p class='third'>" + (vyanjan[k]+"ं") + 
@@ -145,6 +152,7 @@ function parseText(eThisButton) {
  //  out.innerHTML = "<font size=50>"+str+" = "+txt+"</font>"
   
      out.innerHTML = "<div class='main'>"+ str + "</div>"
+	 
 }
 
 function printDevCharset(devMode) {
