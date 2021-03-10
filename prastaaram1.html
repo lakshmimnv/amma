@@ -1,13 +1,13 @@
 <html>
 <head>
 <style>
-html, body {width: 800px; max-width: 700%; background-color: black; color: gray; margin:0; padding: 0;}
+html, body {width: 810px; max-width: 700%; background-color: black; color: gray; margin:0; padding: 0;}
 p.first {font-size:40px; color:green;display:inline;}
 p.second {font-size:50px; color:magenta; display:inline;}
 p.third {font-size: 60px; color: orangered; display:inline;}
 p.fourth {font-size:40px; color:blue;display:inline;}
 p.mantra {font-size:30px; color:lightslategray;display:inline;}
-div.container {border:1px solid white; width:750px;}
+div.container {width:810px;}
 input[type=text] {  padding: 0;  height: 40px;  position: relative;
   left: 0;  outline: none;  border: 1px solid #cdcdcd;  border-color: rgba(0, 0, 0, .15);  background-color: wheat;  font-size: 20px;}
 </style>
@@ -72,16 +72,11 @@ function parseText(eThisButton) {
    var out = document.getElementById("out");
    var str = " ";
    var counter = 1;
- /*  if(eThisButton != "undefined" || eThisButton.defaultValue == "Telugu")
-   {
-   var swara = swaraTelugu;
-   var vyanjan = vyanjanTelugu;
-   }*/
+
    for (i=0; i<swara.length; i++) {
        for(j=0; j<vyanjan.length; j++){
 			for(k=0; k<vyanjan.length; k++){
-			    // window.scrollTo(0, 0); hideText(event)
-            	str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'><small>" + counter++ + ").&nbsp;&nbsp;&nbsp;</small> " + 
+			    str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'><small>" + counter++ + ") &nbsp;</small>" + 
 					"  <p class='first'>" + (swara[i]) + 
 					"  </p><p class='second'>&nbsp;&nbsp;" + (vyanjan[j]+"ం") + 
 					"  </p><p class='third'>&nbsp;&nbsp;" + (vyanjan[k]+"ం") + 
