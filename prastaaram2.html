@@ -134,7 +134,7 @@ function parseText(eThisButton) {
        for(j=0; j<vyanjan.length; j++){
 			for(k=0; k<vyanjan.length; k++){
 			    // window.scrollTo(0, 0); hideText(event)
-            	str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'><small>" + counter++ + ").</small> &nbsp; &nbsp; " + 
+            	str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'><small>" + counter++ + ")</small> &nbsp;" + 
 					"  <p class='first'>" + (swara[i]) + 
 					"  </p><p class='second'>" + (vyanjan[j]+"ं") + 
 					"  </p><p class='third'>" + (vyanjan[k]+"ं") + 
@@ -145,13 +145,9 @@ function parseText(eThisButton) {
 			str+= "<div class='container'><hr/></div>"
 	   }
 	   str+= "<div class='container'><hr/><hr/></div>"
-	   // document.writeln(str);
-	   // str+= counter++ + swara[i] + "  " + "\n";
-      
+	  
    }
- //  alert("txt == "+ txt + "total == "+counter-1);
   // document.getElementById("srcText").value ="<font size=50>"+counter+"</font>";
- //  out.innerHTML = "<font size=50>"+str+" = "+txt+"</font>"
   
      out.innerHTML = "<div class='main'>"+ str + "</div>"
 	 
