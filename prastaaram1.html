@@ -1,7 +1,7 @@
 <html>
 <head>
 <style>
-html, body {width: 700px; max-width: 700%; background-color: black; color: gray; margin:0; padding: 0;}
+html, body {width: 750px; max-width: 700%; background-color: black; color: gray; margin:0; padding: 0;}
 p.first {font-size:40px; color:green;display:inline;}
 p.second {font-size:50px; color:magenta; display:inline;}
 p.third {font-size: 60px; color: orangered; display:inline;}
@@ -90,17 +90,17 @@ function parseText(eThisButton) {
        for(j=0; j<vyanjan.length; j++){
 			for(k=0; k<vyanjan.length; k++){
 			    // window.scrollTo(0, 0); hideText(event)
-            	str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'><small>" + counter++ + ").&nbsp; &nbsp;</small> " + 
+            	str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'><small>" + counter++ + ").&nbsp;&nbsp;&nbsp;</small> " + 
 					"  <p class='first'>" + (swara[i]) + 
-					"  </p><p class='second'>" + (vyanjan[j]+"ం") + 
-					"  </p><p class='third'>" + (vyanjan[k]+"ం") + 
-					"  </p><p class='fourth'> "+ pallava + 
-					"  </p><p class='mantra'>"+ txt + 
+					"  </p><p class='second'>&nbsp;&nbsp;" + (vyanjan[j]+"ం") + 
+					"  </p><p class='third'>&nbsp;&nbsp;" + (vyanjan[k]+"ం") + 
+					"  </p><p class='fourth'>&nbsp;&nbsp; "+ pallava + 
+					"  </p><p class='mantra'>&nbsp;"+ txt + 
 					"  </p></div>";			
 			}
-			str+= "<hr/><hr/><br/>"
+			// str+= "<hr/><hr/><br/>"
 	   }
-	   str+= "<hr/><hr/><hr/><br/>"
+	   // str+= "<hr/><hr/><hr/><br/>"
       
    }
   
