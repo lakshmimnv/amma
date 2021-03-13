@@ -1,0 +1,191 @@
+<html>
+<head>
+<style>
+html, body {width: 835px; max-width: 840px; background-color: black; color: gray; margin:0; padding: 0;}
+p.first {font-size:40px; color:green;display:inline;}
+p.second {font-size:50px; color:magenta; display:inline;}
+p.third {font-size: 60px; color: orangered; display:inline;}
+p.fourth {font-size:40px; color:blue;display:inline;}
+p.mantra {font-size:30px; color:lightslategray;display:inline;}
+div.container {width:835px;}
+input[type=text] {  padding: 0;  height: 40px;  position: relative;
+  left: 0;  outline: none;  border: 1px solid #cdcdcd;  border-color: rgba(0, 0, 0, .15);  background-color: wheat;  font-size: 20px;}
+</style>
+</head>
+
+<body>
+
+<!--p>&nbsp;</p-->
+<div id="topText">
+Mantram: <input type=text size=10 id=pallavamText value="నమశ్శివాయ" /><br />
+16*36*36 = 20736;
+<input type=button value="Matrukalu" id=devnagari onclick="parseText(this)" /> 
+<!--input type=button value="Telugu" id=telugu onclick="parseText(this)" /> -->
+</div>
+
+<div id=out> </div>
+<div id=chartab > </div>
+
+
+<script>
+function addEventHandler() {
+    mtab = document.getElementsByClassName("container")
+    for (let tab of mtab)
+        tab.onclick=function(event){
+						remove(this, event);
+						window.scrollTo(0, 0);
+						// addText(event.target.innerText)
+						}
+}					
+
+
+function remove(eThis, e) {
+  var element=eThis, incr = 0, all = document.querySelectorAll(".container");
+  if(document.getElementById("topText"))
+  document.getElementById("topText").remove();
+ 
+for( i=0; i<all.length; i++ ) 
+{
+  if(i==0) { incr = all[i].id; };
+  if(incr++ <= e.currentTarget.id) {
+     all[i].remove();
+	 console.log(all[i].id + "element removed");
+  } 
+  else { return; }
+  
+}
+element.remove();
+out.innerHTML = "<div class='main'>"+ all + "</div>"
+ 
+}
+function hideText(e) {
+ /* 
+  var elems = document.querySelectorAll(".active");
+  
+//  for(i=1; i<e.currentTarget.id; i++){
+   for(i=1; i<3; i++){
+	elems = document.querySelectorAll(".container");
+	console.log(elems);
+  }
+  [].forEach.call(elems, function(el) {
+     console.log(el);
+     el.classList.remove("active");
+  });
+  //e.currentTarget.className = "container active";
+  var id = e.currentTarget.id;
+ //  alert("hide called on "+e.currentTarget.id);
+ */
+}
+function parseText(eThisButton) {
+// हंसस्सोहं  नमश्शिवाय श्रीमात्रेनमः శ్రీం హ్రీం హ్రౌం నమశ్శివాయ श्रीमात्रेनमः
+
+   var txt = document.getElementById("pallavamText").value.trim();
+   var out = document.getElementById("out");
+   var str = " ";
+   var counter = 1;
+   
+
+   for (i=12; i<swara.length; i++) {
+       for(j=0; j<vyanjan.length; j++){
+			var temp="", temp1="";
+			for(k=0; k<vyanjan.length; k++){
+			
+			    if(k==0) { temp = "<hr />"; }
+				if(counter%5 ==1) { temp1 = pallava + " "+txt; }
+			    str += "<div class='container' id='"+counter+"'>"+ temp +"<small>" + counter++ + ") &nbsp;</small>" + 
+					"<p class='first'>" + (swara[i]) + 
+					" </p><p class='second'>&nbsp;&nbsp;" + (vyanjan[j]+"ం") + 
+					" </p><p class='third'>&nbsp; " + (vyanjan[k]+"ం") + 
+					" </p><p class='mantra'>&nbsp;"+ temp1 + 
+					" </p></div>";	
+				temp1=""; temp="";
+			}
+			//str+= "<div class='container'><hr/></div>"
+	   }
+	   // str+= "<div class='container'><hr/></div>"
+      
+   }
+  
+     out.innerHTML = "<div class='main'>"+ str + "</div>"
+	 
+}
+
+function printDevCharset(devMode) {
+    var start = 0x900;
+    var inc = 0;
+    var str=' <table style="font-size:20"><tr>';
+    for (i = 0; i <27; i++) {
+      for (j = 0; j < 5; j++) {
+        var ca = start+inc;
+        str += '<td style="background-color: #00FFFF;font-size:30" >'+ String.fromCharCode(ca) +"</td>"
+
+        if (devMode) {
+            str += " <td>"+inc+"</td>"
+                + "<td>"+"  0x"+ca.toString(16).toUpperCase()+" </td>"
+                + " <td>&nbsp; </td>";
+        }
+         //str += " <td>&nbsp; </td>";
+        //String sc = new String(ca);
+        //System.out.print(sc + " ");
+        inc++;
+        if (inc == 21 || inc == 58) break;
+        
+      }
+    //System.out.println();
+    str += "</tr><tr>"
+    }
+    str += "</tr></table>"
+    return str;
+}
+
+
+</script>
+
+
+<script>
+/*
+var halanth = "्"
+var anuswara = "ं"
+var visarga = "ः"
+var samyukta = "््"
+var chandrabindu = "ँ" 
+var swaraMatra = new Map([
+    ['अ',' '],     ['आ','ा'],    ['इ','ि'],    ['ई','ी'],    ['उ','ु'],    ['ऊ','ू'],    ['ऋ','ृ'],    ['ॠ','ॄ'],    ['ऌ','ॢ'],    ['ॡ','ॣ'],    ['ए','े'],    ['ऐ','ै'],   ['ओ','ो'],    ['औ','ौ'],    ['अं', '\u0902'],    ['अः','\u0903']
+])
+*/
+var swara = [ 'అం', 'ఆం', 'ఇం', 'ఈం',  'ఉం', 'ఊం', 'ఋం', 'ౠం', 'ఌం', 'ౡం', 'ఏం', 'ఐం', 'ఓం', 'ఔం',  'అఃం', 'అం' ];
+var swaraOld = [ 'अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ऋ', 'ॠ', 'ऌ', 'ॡ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः' ];
+// var pallava = "आं ईं नमः";
+var pallava = "ఆం ఈం నమః";
+
+/*var vyanjan = [ 'अ',
+                'क', 'ख', 'ग', 'घ', 'ङ', 
+                'च', 'छ', 'ज', 'झ', 'ञ', 
+                'ट', 'ठ', 'ड', 'ढ', 'ण', 
+                'त', 'थ', 'द', 'ध', 'न', 
+                'प', 'फ', 'ब', 'भ', 'म', 
+                'य', 'र', 'ल', 'व', 
+				'श', 'ष', 'स', 'ह', 'ळ', 'क्ष' 
+               ]; */
+var vyanjan = [ 'అ', 
+                'క', 'ఖ', 'గ', 'ఘ', 'ఙ', 
+                'చ', 'ఛ', 'జ', 'ఝ', 'ఞ', 
+                'ట', 'ఠ', 'డ', 'ఢ', 'ణ', 
+                'త', 'థ', 'ద', 'ధ', 'న', 
+                'ప', 'ఫ', 'బ', 'భ', 'మ', 
+                'య', 'ర', 'ల', 'వ', 
+				'శ', 'ష', 'స', 'హ', 'ళ', 'క్ష' 
+               ];			   
+
+
+</script>
+
+
+<script>
+parseText();
+addEventHandler();
+</script>
+
+</body>
+
+</html>
