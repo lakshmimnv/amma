@@ -1,15 +1,22 @@
 <html>
 <head>
 <style>
-html, body {width: 835px; max-width: 840px; background-color: black; color: gray; margin:0; padding: 0;}
+html, body {width: 750px; max-width: 700%; background-color: black; color: gray; margin:0; padding: 0;}
+a {color:white;font-size:20px;}
 p.first {font-size:40px; color:green;display:inline;}
-p.second {font-size:50px; color:magenta; display:inline;}
-p.third {font-size: 60px; color: orangered; display:inline;}
-p.fourth {font-size:40px; color:blue;display:inline;}
-p.mantra {font-size:30px; color:lightslategray;display:inline;}
-div.container {width:835px;}
-input[type=text] {  padding: 0;  height: 40px;  position: relative;
-  left: 0;  outline: none;  border: 1px solid #cdcdcd;  border-color: rgba(0, 0, 0, .15);  background-color: wheat;  font-size: 20px;}
+p.second {font-size:60px; color:magenta; display:inline;}
+p.third {font-size:80px; color:darkred;display:inline;}
+p.fourth {font-size:50px; color:blue;display:inline;}
+p.mantra {font-size:40px; color:slategray;display:inline;}
+/*
+td { color: #9900CC; font-weight: bold; }
+//table.dis td { background-color: #00FFFF;font-size:30}
+table.dis td {  background-color: #00FFFF;  font-size:40;  cell-spacing:10;  text-align:center;  border: 1px solid black; 
+  width:60px}
+table.dis td:hover {background-color: #F0F0F0; font-weight: bold; }
+*/
+input[type=text] {  padding: 0;  height: 50px;  position: relative;
+  left: 0;  outline: none;  border: 1px solid #cdcdcd;  border-color: rgba(0, 0, 0, .15);  background-color: white;  font-size: 40px;}
 </style>
 </head>
 
@@ -17,10 +24,19 @@ input[type=text] {  padding: 0;  height: 40px;  position: relative;
 
 <!--p>&nbsp;</p-->
 <div id="topText">
-Mantram: <input type=text size=10 id=pallavamText value="నమశ్శివాయ" /><br />
-16*36*36 = 20736;
+<input type=text size=10 id=pallavamText value="श्रीमात्रेनमः" />16*36*36 = 20736;
 <input type=button value="Matrukalu" id=devnagari onclick="parseText(this)" /> 
 <!--input type=button value="Telugu" id=telugu onclick="parseText(this)" /> -->
+<p class="links">
+<a href="prastaaram1.html">1.</a>  
+<a href="prastaaram2.html">2.</a>  
+<a href="prastaaram3.html">3</a>  
+<a href="prastaaram4.html">4.</a>  
+<a href="prastaaram5.html">5.</a>  
+<a href="prastaaram6.html">6.</a>  
+<a href="prastaaram7.html">7.</a>
+<a href="prastaaram8.html">8.</a>
+</p>
 </div>
 
 <div id=out> </div>
@@ -28,6 +44,16 @@ Mantram: <input type=text size=10 id=pallavamText value="నమశ్శివ�
 
 
 <script>
+function addEventHandler() {
+    mtab = document.getElementsByClassName("container")
+    for (let tab of mtab)
+        tab.onclick=function(event){
+						remove(this, event);
+						window.scrollTo(0, 0);
+						// addText(event.target.innerText)
+						}
+}					
+
 function remove(eThis, e) {
   var element=eThis, incr = 0, all = document.querySelectorAll(".container");
   if(document.getElementById("topText"))
@@ -36,17 +62,18 @@ function remove(eThis, e) {
 for( i=0; i<all.length; i++ ) 
 {
   if(i==0) { incr = all[i].id; };
-  if(incr++ < e.currentTarget.id) {
+  if(incr++ <= e.currentTarget.id) {
      all[i].remove();
 	 console.log(all[i].id + "element removed");
   } 
   else { return; }
-  
+ 
 }
-element.remove();
+//element.remove();
 out.innerHTML = "<div class='main'>"+ all + "</div>"
  
 }
+
 function hideText(e) {
  /* 
   var elems = document.querySelectorAll(".active");
@@ -66,32 +93,55 @@ function hideText(e) {
  */
 }
 function parseText(eThisButton) {
-// हंसस्सोहं  नमश्शिवाय श्रीमात्रेनमः శ్రీం హ్రీం హ్రౌం నమశ్శివాయ श्रीमात्रेनमः
+// हंसस्सोहं  नमश्शिवाय श्रीमात्रेनमः శ్రీం హ్రీం హ్రౌం నమశ్శివాయ
 
    var txt = document.getElementById("pallavamText").value.trim();
    var out = document.getElementById("out");
    var str = " ";
    var counter = 1;
-
+ /*  if(eThisButton != "undefined" || eThisButton.defaultValue == "Telugu")
+   {
+   var swara = swaraTelugu;
+   var vyanjan = vyanjanTelugu;
+   }
+   /*
+     for (i=0; i<swara.length; i++) {
+       for(j=0; j<swara.length; j++){
+			for(k=1; k<vyanjan.length; k++){
+					document.writeln (counter++ + "). &nbsp; &nbsp; " + 
+					"  <p class='first'>" + (swara[i]) + 
+					"  </p><p class='second'>" + (swara[j]) + 
+					"  </p><p class='third'>" + (vyanjan[k]+"ं") + 
+					"  </p><p class='fourth'>"+ "आं ईं नमः" + 
+					"  </p><p class='mantra'>"+ txt + 
+					"  </p><br />");
+			}
+	   }
+	   //document.writeln("\n");
+	   // str+= counter++ + swara[i] + "  " + "\n";
+      
+   }*/
    for (i=0; i<swara.length; i++) {
        for(j=0; j<vyanjan.length; j++){
-			for(k=0; k<vyanjan.length; k++){
-			    str += "<div class='container' onclick='remove(this, event); window.scrollTo(0, 0);' id='"+counter+"'><small>" + counter++ + ") &nbsp;</small>" + 
-					"<p class='first'>" + (swara[i]) + 
-					" </p><p class='second'>&nbsp;&nbsp;" + (vyanjan[j]+"ం") + 
-					" </p><p class='third'>&nbsp; " + (vyanjan[k]+"ం") + 
-					" </p><p class='fourth'>&nbsp; "+ pallava + 
-					" </p><p class='mantra'>&nbsp;"+ txt + 
-					" </p></div>";			
+			    var temp="", temp1="";
+				for(k=0; k<vyanjan.length; k++){
+					if(k==0) { temp = "<hr />"; }
+					str += "<div class='container' id='"+counter+"'>"+ temp +"<small>" + counter++ + ") &nbsp;</small>" + 
+					"  <p class='first'>" + (swara[i]) + 
+					"  </p><p class='second'>" + (vyanjan[j]+"ं") + 
+					"  </p><p class='third'>" + (vyanjan[k]+"ं") + 
+					"  </p><p class='fourth'>"+ "आं ईं नमः" + 
+					"  </p><p class='mantra'>"+ txt + 
+					"  </p><br /></div>";	
+					temp1=""; temp="";
+				
 			}
-			str+= "<div class='container'><hr/></div>"
 	   }
-	   str+= "<div class='container'><hr/></div>"
-      
    }
+  // document.getElementById("srcText").value ="<font size=50>"+counter+"</font>";
   
      out.innerHTML = "<div class='main'>"+ str + "</div>"
-	 
+	 addEventHandler();
 }
 
 function printDevCharset(devMode) {
@@ -127,7 +177,8 @@ function printDevCharset(devMode) {
 
 
 <script>
-/*
+//Database
+/* 'इ', 'ई', 'उ', 'ऊ', 'ऋ', 'ॠ', 'ऌ', 'ॡ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः'
 var halanth = "्"
 var anuswara = "ं"
 var visarga = "ः"
@@ -136,13 +187,16 @@ var chandrabindu = "ँ"
 var swaraMatra = new Map([
     ['अ',' '],     ['आ','ा'],    ['इ','ि'],    ['ई','ी'],    ['उ','ु'],    ['ऊ','ू'],    ['ऋ','ृ'],    ['ॠ','ॄ'],    ['ऌ','ॢ'],    ['ॡ','ॣ'],    ['ए','े'],    ['ऐ','ै'],   ['ओ','ो'],    ['औ','ौ'],    ['अं', '\u0902'],    ['अः','\u0903']
 ])
-*/
-var swara = [ 'అం', 'ఆం', 'ఇం', 'ఈం',  'ఉం', 'ఊం', 'ఋం', 'ౠం', 'ఌం', 'ౡం', 'ఏం', 'ఐం', 'ఓం', 'ఔం', 'అం', 'అః' ];
-var swaraOld = [ 'अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ऋ', 'ॠ', 'ऌ', 'ॡ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः' ];
-// var pallava = "आं ईं नमः";
-var pallava = "ఆం ఈం నమః";
 
-/*var vyanjan = [ 'अ',
+
+let matraSwara = new Map([...swaraMatra.entries()].map(
+  ([key, value]) => ([value, key]))
+);
+*/
+var swara = [ 'अं', 'आं', 'इं', 'ईं',  'उं', 'ऊं', 'ऋं', 'ॠं', 'ऌं', 'ॡं', 'एं', 'ऐं', 'ओं', 'औं', 'अं', 'अः' ];
+var swaraTelugu = [ 'అం', 'ఆం', 'ఇం', 'ఈం',  'ఉం', 'ఊం', 'ఋం', 'ౠం', 'ఌం', 'ౡం', 'ఏం', 'ఐం', 'ఓం', 'ఔం', 'అం', 'అః' ];
+var swaraOld = [ 'अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ऋ', 'ॠ', 'ऌ', 'ॡ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः' ]
+var vyanjan = [ 'अ',
                 'क', 'ख', 'ग', 'घ', 'ङ', 
                 'च', 'छ', 'ज', 'झ', 'ञ', 
                 'ट', 'ठ', 'ड', 'ढ', 'ण', 
@@ -150,8 +204,8 @@ var pallava = "ఆం ఈం నమః";
                 'प', 'फ', 'ब', 'भ', 'म', 
                 'य', 'र', 'ल', 'व', 
 				'श', 'ष', 'स', 'ह', 'ळ', 'क्ष' 
-               ]; */
-var vyanjan = [ 'అ', 
+               ];
+var vyanjanTelugu = [ 'అ',
                 'క', 'ఖ', 'గ', 'ఘ', 'ఙ', 
                 'చ', 'ఛ', 'జ', 'ఝ', 'ఞ', 
                 'ట', 'ఠ', 'డ', 'ఢ', 'ణ', 
@@ -162,11 +216,24 @@ var vyanjan = [ 'అ',
                ];			   
 
 
+// var sankya = [ '०', '१', '२', '३', '४', '५', '६', '७', '८', '९' ]
+// let charsetStr = printDevCharset(true);
+/* let charsetStr = printKeyboard(); */
+/*
+var tab = document.getElementById("chartab");
+tab.innerHTML = "<p><font size=30><mark>" + charsetStr;
+addEventHandler();
+*/
+
 </script>
 
 
 <script>
+//Test code
+/* var out = document.getElementById("out"); */
+//out.innerHTML = swaraMatra.get('इ');
 parseText();
+addEventHandler();
 </script>
 
 </body>

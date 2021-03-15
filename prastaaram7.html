@@ -16,10 +16,11 @@ input[type=text] {  padding: 0;  height: 40px;  position: relative;
 
 <body>
 <div id="topText">
-<input type=text size=30 id=samputiText value="ఐం క్లీం సౌః సౌః క్లీం ఐం" />
-<input type=text size=10 id=pallavamText value="నమః" /><br />
-<input type=button value="SHOW" id=devnagari onclick="parseText(this)" />
 
+<input type=text size=10 id=samputiText value="శ్రీమాత్రే నమః" />
+Mantram: 
+<input type=text size=10 id=pallavamText value="నమః" />
+<input type=button value="SHOW" id=devnagari onclick="parseText(this)" /> 
 <p class="links">
 <a href="prastaaram1.html">1.</a>  
 <a href="prastaaram2.html">2.</a>  
@@ -29,8 +30,7 @@ input[type=text] {  padding: 0;  height: 40px;  position: relative;
 <a href="prastaaram6.html">6.</a>  
 <a href="prastaaram7.html">7.</a>
 <a href="prastaaram8.html">8.</a>
-</p><br/>
-<!--input type=button value="Matrukalu" id=devnagari onclick="parseText(this)" /> 
+</p> <br/>
 <!--input type=button value="Telugu" id=telugu onclick="parseText(this)" /> -->
 <p><pre>శ్రీలలితాసహస్రనామావలీ 
       .. ధ్యానం ..
@@ -88,7 +88,7 @@ for( i=0; i<all.length; i++ )
 }
 element.remove();
 out.innerHTML = "<div class='main'>"+ all + "</div>"
- 
+addEventHandler(); 
 }
 function hideText(e) {
  /* 
@@ -153,7 +153,7 @@ function parseText(eThisButton) {
    }
 */  
      out.innerHTML = "<div class='main'>"+ str + "</div>"
-	 addEventHandler();
+	 
 }
 
 function printDevCharset(devMode) {
@@ -1231,7 +1231,7 @@ var lalita = [ 'శ్రీమాత్రే  ', 'శ్రీమహారా�
 
 <script>
 parseText();
-
+addEventHandler();
 </script>
 
 </body>
