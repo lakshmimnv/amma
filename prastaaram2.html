@@ -18,7 +18,7 @@ input[type=text] {  padding: 0;  height: 40px;  position: relative;
 
 <!--p>&nbsp;</p-->
 <div id="topText">
-<input type=text size=10 id=pallavamText value="శ్రీమాత్రే నమః" />16*36*36 = 20736
+<input type=text size=10 id=pallavamText value="" />16*36*36 = 20736
 <input type=button value="Matrukalu" id=devnagari onclick="parseText(this)" /> 
 <!--input type=button value="Telugu" id=telugu onclick="parseText(this)" /> -->
 <p class="links">
@@ -56,15 +56,16 @@ function remove(eThis, e) {
 for( i=0; i<all.length; i++ ) 
 {
   if(i==0) { incr = all[i].id; };
-  if(incr++ < e.currentTarget.id) {
+  if(incr++ <= e.currentTarget.id) {
      all[i].remove();
 	 console.log(all[i].id + "element removed");
   } 
   else { return; }
   
 }
-element.remove();
+//element.remove();
 out.innerHTML = "<div class='main'>"+ all + "</div>"
+addEventHandler(); 
  
 }
 function hideText(e) {
@@ -102,7 +103,7 @@ function parseText(eThisButton) {
 					"<p class='first'>" + (swara[i]) + 
 					" </p><p class='second'>&nbsp;&nbsp;" + (vyanjan[j]+"ం") + 
 					" </p><p class='third'>&nbsp; " + (vyanjan[k]+"ం") + 
-					" </p><p class='fourth'>&nbsp; "+ pallava + 
+					" </p><p class='mantra'>&nbsp; "+ pallava + 
 					" </p><p class='mantra'>&nbsp;"+ txt + 
 					" </p></div>";	
 					temp1=""; temp="";
@@ -110,7 +111,7 @@ function parseText(eThisButton) {
 			
 	   }
    }
-  
+		
      out.innerHTML = "<div class='main'>"+ str + "</div>"
 	 addEventHandler();
 }
@@ -171,7 +172,8 @@ var pallava = "ఆం ఈం నమః";
                 'प', 'फ', 'ब', 'भ', 'म', 
                 'य', 'र', 'ल', 'व', 
 				'श', 'ष', 'स', 'ह', 'ळ', 'क्ष' 
-               ]; */
+               ]; 
+*/
 var vyanjan = [ 'అ', 
                 'క', 'ఖ', 'గ', 'ఘ', 'ఙ', 
                 'చ', 'ఛ', 'జ', 'ఝ', 'ఞ', 
@@ -184,8 +186,6 @@ var vyanjan = [ 'అ',
 
 
 </script>
-
-
 <script>
 parseText();
 addEventHandler();

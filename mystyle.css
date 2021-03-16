@@ -1,0 +1,11 @@
+html, body {width: 835px; max-width: 840px; background-color: black; color: gray; margin:0; padding: 0;}
+a {color:white;font-size:20px;}
+#dhyanam {color: navajowhite; font-size:20px;}
+p.first {font-size:20px; color:green;display:inline;}
+p.second {font-size:50px; color:magenta; display:inline;}
+p.third {font-size: 60px; color: orangered; display:inline;}
+p.fourth {font-size:15px; color:lightgray;display:inline;}
+p.mantra {font-size:30px; color:magenta;display:inline;}
+div.container {width:835px;}
+input[type=text] {  padding: 0;  height: 40px;  position: relative;
+  left: 0;  outline: none;  border: 1px solid #cdcdcd;  border-color: rgba(0, 0, 0, .15);  background-color: wheat;  font-size: 20px;}
